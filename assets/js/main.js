@@ -7,15 +7,24 @@ $(document).ready(function() {
     $('.center').slick({
       centerMode: true,
       autoplay: true,
-      autoplaySpeed: 2500,
+      autoplaySpeed: 4500,
       speed: 1500,
       centerPadding: '10px',
       slidesToShow: 3,
       responsive: [
         {
+          breakpoint: 1900,
+          settings: {
+    
+            centerMode: true,
+            centerPadding: '10px',
+            slidesToShow: 2
+          }
+        },
+        {
           breakpoint: 993,
           settings: {
-            arrows: false,
+            
             centerMode: true,
             centerPadding: '10px',
             slidesToShow: 2
@@ -28,7 +37,7 @@ $(document).ready(function() {
             arrows: false,
             centerMode: true,
             centerPadding: '10px',
-            slidesToShow: 2
+            slidesToShow: 1
           }
         },
         {
@@ -64,11 +73,10 @@ $(document).ready(function() {
         card.classList.toggle('active');
         if (card.classList.contains('active')) {
             text.style.maxHeight = text.scrollHeight + 'px';
-            img.src = 'assets/img/minus.png';
+            img.style.transform = 'translateY(-50%) rotate(-45deg)';
         } else {
             text.style.maxHeight = '0';
-            img.src = 'assets/img/plus.png';
-            // Ожидание завершения анимации
+            img.style.transform = 'translateY(-50%) rotate(0deg)';
             text.addEventListener('transitionend', () => {
                 if (!card.classList.contains('active')) {
                     text.style.display = 'none';
@@ -76,7 +84,8 @@ $(document).ready(function() {
             });
         }
     });
-});
+  });
+
 
 
 //Прокрут до секции 
